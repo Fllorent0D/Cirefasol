@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="Cirefasol" uuid="31842056-61ff-412c-989b-3f81550cde3e">
+    <database-info product="MySQL" version="5.5.47-0ubuntu0.14.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="c0cirefasol"/>
+    <table name="actions" schema="" catalog="c0cirefasol" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="titre" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="date_evenement" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="lieu" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ponctuelle" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
+      <column name="description" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="activite" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="responsable" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="label" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="sequence" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="visible" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="actions_users_id_fk" columns="responsable" ref-table="users" ref-schema="" ref-catalog="c0cirefasol" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="inscriptions_actions_id_fk" table="inscriptions" schema="" catalog="c0cirefasol" columns="action_id"/>
+      <index name="actions_users_id_fk" unique="false" columns="responsable"/>
+    </table>
+    <table name="activites" schema="" catalog="c0cirefasol" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="nom" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="inscriptions" schema="" catalog="c0cirefasol" type="TABLE">
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="action_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="traite" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
+      <column name="date_inscription" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <foreign-key name="inscriptions_actions_id_fk" columns="action_id" ref-table="actions" ref-schema="" ref-catalog="c0cirefasol" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="inscriptions_users_id_fk" columns="user_id" ref-table="users" ref-schema="" ref-catalog="c0cirefasol" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="inscriptions_actions_id_fk" unique="false" columns="action_id"/>
+      <index name="inscriptions_users_id_fk" unique="false" columns="user_id"/>
+    </table>
+    <table name="users" schema="" catalog="c0cirefasol" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="nom" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="password" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="role" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="prenom" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="biographie" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="rue" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ville" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="codepostal" sqlType="VARCHAR" precision="6" scale="0" nullable="true" jdbcType="12"/>
+      <column name="pays" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="telephone" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="numero" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="photo" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" def="J3VzZXIucG5nJw=="/>
+      <column name="email_confirme" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
+      <column name="token" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="actions_users_id_fk" table="actions" schema="" catalog="c0cirefasol" columns="responsable"/>
+      <exported-key name="inscriptions_users_id_fk" table="inscriptions" schema="" catalog="c0cirefasol" columns="user_id"/>
+    </table>
+  </data-source>
+  <data-source name="localhost" uuid="45200854-f9c7-4bae-abec-fd3c678aa498">
+    <database-info product="MySQL" version="5.5.42" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
+    <schema name="" catalog="cirefasol"/>
+    <table name="actions" schema="" catalog="cirefasol" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="titre" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="date_evenement" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="lieu" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="categorie_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="ponctuelle" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
+      <column name="description" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="actions_ponctuelles_activites_id_fk" columns="categorie_id" ref-table="categories" ref-schema="" ref-catalog="cirefasol" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="inscriptions_actions_id_fk" table="inscriptions" schema="" catalog="cirefasol" columns="action_id"/>
+      <index name="actions_ponctuelles_activites_id_fk" unique="false" columns="categorie_id"/>
+    </table>
+    <table name="categories" schema="" catalog="cirefasol" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="nom" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="actions_ponctuelles_activites_id_fk" table="actions" schema="" catalog="cirefasol" columns="categorie_id"/>
+    </table>
+    <table name="inscriptions" schema="" catalog="cirefasol" type="TABLE">
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="action_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <foreign-key name="inscriptions_actions_id_fk" columns="action_id" ref-table="actions" ref-schema="" ref-catalog="cirefasol" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="inscriptions_users_id_fk" columns="user_id" ref-table="users" ref-schema="" ref-catalog="cirefasol" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="inscriptions_actions_id_fk" unique="false" columns="action_id"/>
+      <index name="inscriptions_users_id_fk" unique="false" columns="user_id"/>
+    </table>
+    <table name="users" schema="" catalog="cirefasol" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="nom" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="password" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="role" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="prenom" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="biographie" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="rue" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ville" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="codepostal" sqlType="VARCHAR" precision="6" scale="0" nullable="true" jdbcType="12"/>
+      <column name="pays" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="telephone" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="numero" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="photo" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" def="J3VzZXIucG5nJw=="/>
+      <column name="email_confirme" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
+      <column name="token" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="inscriptions_users_id_fk" table="inscriptions" schema="" catalog="cirefasol" columns="user_id"/>
+    </table>
+  </data-source>
+</component>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Cirefasol" uuid="31842056-61ff-412c-989b-3f81550cde3e">
+      <secret-storage>master_key</secret-storage>
+      <user-name>c0floca</user-name>
+      <schema-pattern>c0cirefasol.*</schema-pattern>
+      <default-schemas>c0cirefasol.*</default-schemas>
+      <ssh-properties>
+        <enabled>true</enabled>
+        <proxy-host>46.101.145.154</proxy-host>
+        <proxy-port>22</proxy-port>
+        <secret-storage>master_key</secret-storage>
+        <user>florent</user>
+        <use-password>true</use-password>
+      </ssh-properties>
+    </data-source>
+    <data-source name="localhost" uuid="45200854-f9c7-4bae-abec-fd3c678aa498">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>cirefasol.*</schema-pattern>
+      <default-schemas>cirefasol.*</default-schemas>
+    </data-source>
+  </component>
+</project>

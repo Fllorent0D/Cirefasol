@@ -1,0 +1,94 @@
+#!/usr/bin/php
+<?php
+
+// Définition des variables
+$name = $argv[1];
+$controllerName = ucfirst($name) . 'sController';
+$modelName = ucfirst($name);
+$entityName = ucfirst($name) . 'Entity';
+
+if (!isset($argv[2])) {
+    c($controllerName);
+    m($modelName);
+    v($name);
+    e($entityName);
+} else {
+    $params = explode('-', $argv[2]);
+    foreach ($params as $p) {
+        if ($p == 'm') {
+            m($modelName);
+        }
+        if ($p == 'v') {
+            v($name);
+        }
+        if ($p == 'c') {
+            c($controllerName);
+        }
+        if ($p == 'e') {
+            e($entityName);
+        }
+    }
+}
+
+function c($controllerName)
+{
+    // Création du controller
+    $controllerFile = fopen('./App/Controllers/' . $controllerName . '.php', 'w+');
+    fputs($controllerFile, '<?php
+
+namespace App\Controllers;
+
+
+class ' . $controllerName . ' extends AppController
+{
+
+
+}');
+    fclose($controllerFile);
+    echo("\n" . 'Création du controller ' . $controllerName . '.php' . "\n");
+}
+
+function m($modelName)
+{
+    // Création du model
+    $modelFile = fopen('./App/Models/' . $modelName . '.php', 'w+');
+    fputs($modelFile, '<?php
+
+namespace App\Models;
+
+
+class ' . $modelName . ' extends AppModel
+{
+
+
+}');
+    fclose($modelFile);
+    echo("\n" . 'Création du model ' . $modelName . '.php' . "\n");
+}
+
+function e($entityName)
+{
+    // Création de l'entité
+    if (!file_exists('./App/Models/Entities') && !is_dir('./App/Models/Entities'))
+        mkdir('./App/Models/Entities');
+    $entityFile = fopen('./App/Models/Entities/' . $entityName . '.php', 'w+');
+    fputs($entityFile, '<?php
+
+namespace App\Models\Entities;
+
+
+class ' . $entityName . '
+{
+
+
+}');
+    fclose($entityFile);
+    echo("\n" . 'Création de l\'entité ' . $entityName . '.php' . "\n");
+}
+
+function v($name)
+{
+    // Création du dossier des vues
+    mkdir('./App/Views/' . ucfirst($name) . 's');
+    echo("\n" . 'Création du dossier des vues ' . $name . 's' . "\n");
+}
