@@ -51,8 +51,8 @@ class UsersController extends AppController
         $mail->Host = "smtp.gmail.com";
         $mail->SMTPAuth = true;                               // Enable SMTP authentication
         $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-        $mail->Username = "fcardoen@gmail.com";                 // SMTP username
-        $mail->Password = "Fc087229090";                           // SMTP password
+        $mail->Username = "";                 // SMTP username
+        $mail->Password = "";                           // SMTP password
         $mail->Port = 587;
         $mail->setFrom($mail->Username, "Cirefasol");
         $mail->addAddress("f.cardoen@me.com");
